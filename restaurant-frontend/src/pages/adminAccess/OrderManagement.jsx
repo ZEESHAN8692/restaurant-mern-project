@@ -16,7 +16,7 @@ export default function OrderManagement() {
   const fetchPendingOrders = async () => {
     setLoadingPending(true);
     try {
-      const res = await fetch("https://7-eleven-backend.vercel.app/api/pending-orders", {
+      const res = await fetch("http://localhost:8000/api/pending-orders", {
         credentials: "include",
       });
       const data = await res.json();
@@ -33,7 +33,7 @@ export default function OrderManagement() {
   const fetchTodayOrders = async () => {
     setLoadingToday(true);
     try {
-      const res = await fetch("https://7-eleven-backend.vercel.app/api/admin-today-orders", {
+      const res = await fetch("http://localhost:8000/api/admin-today-orders", {
         credentials: "include",
       });
       const data = await res.json();
@@ -47,7 +47,7 @@ export default function OrderManagement() {
   // Update Order Status
   const updateOrderStatus = async (orderId, status) => {
     try {
-      const res = await fetch("https://7-eleven-backend.vercel.app/api/update-order", {
+      const res = await fetch("http://localhost:8000/api/update-order", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

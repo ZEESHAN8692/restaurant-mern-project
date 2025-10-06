@@ -1,4 +1,4 @@
-// middleware/CheckAuth.js
+
 import User from "../Model/UserModel.js";
 
 async function CheckAuth(req, res, next) {

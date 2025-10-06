@@ -30,8 +30,7 @@ export const login = async (req, res) => {
       sameSite: "none"
     });
 
-    
-    //write here something
+  
     
     return res.status(200).json({
       success: true,
@@ -182,7 +181,7 @@ export const getStats = async (req, res) => {
 
 
 
-//payment Division Collection Using Methods 
+
 export const topFinance = async (req, res) => {
   try {
     const paymentStats = await Bill.aggregate([
@@ -243,7 +242,7 @@ export const topItems = async (req, res) => {
 };
 
 
-// ✅ Get all pending orders
+//  Get all pending orders
 export const getPendingOrders = async (req, res) => {
   try {
     const pendingOrders = await Order.find({ status: "pending_payment" });
@@ -294,8 +293,8 @@ export const update_PendingOrders = async (req, res) => {
         customerName: order.customerName,
         customerPhone: order.phone,
         items: order.items,
-        totalAmount: order.payment.amount, // ✅ matches schema
-        paymentMethod: order.payment.method // ✅ matches schema enum
+        totalAmount: order.payment.amount, //  matches schema
+        paymentMethod: order.payment.method //  matches schema enum
       });
 
       return res.status(200).json({
@@ -333,7 +332,7 @@ export const showTodayOrders = async (req, res) => {
     const endOfDay = new Date();
     endOfDay.setHours(23, 59, 59, 999);
 
-    // Query: payment.status = "completed" & createdAt is today
+ 
     const todayOrders = await Order.find({
       "status": "completed",
       createdAt: { $gte: startOfDay, $lte: endOfDay }
@@ -367,13 +366,13 @@ export const adminDashboardStats = async (req, res) => {
     const todayStart = moment().startOf("day").toDate();
     const todayEnd = moment().endOf("day").toDate();
 
-    // 1️⃣ Total sales (all time)
+    // 1️Total sales (all time)
     const totalSalesData = await Bill.aggregate([
       { $group: { _id: null, totalSales: { $sum: "$totalAmount" } } }
     ]);
     const totalSales = totalSalesData[0]?.totalSales || 0;
 
-    // 2️⃣ Today's stats
+    // 2 Today's stats
     const todayStats = await Bill.aggregate([
       { $match: { createdAt: { $gte: todayStart, $lte: todayEnd } } },
       {
@@ -389,7 +388,7 @@ export const adminDashboardStats = async (req, res) => {
     const todayBills = todayStats[0]?.todayBills || 0;
     const todayCustomers = todayStats[0]?.todayCustomers.length || 0;
 
-    // 3️⃣ Payment method split
+    // 3️ Payment method split
     const paymentSplit = await Bill.aggregate([
       {
         $group: {
@@ -403,7 +402,7 @@ export const adminDashboardStats = async (req, res) => {
       paymentMethods[p._id] = p.total;
     });
 
-    // 4️⃣ Top 5 items (weekly)
+    // 4️ Top 5 items (weekly)
     const topItems = await Bill.aggregate([
       { $unwind: "$items" },
       {
@@ -419,7 +418,7 @@ export const adminDashboardStats = async (req, res) => {
       { $limit: 5 }
     ]);
 
-    // 5️⃣ Monthly sales last 12 months
+    // 5️ Monthly sales last 12 months
     const monthlySales = await Bill.aggregate([
       {
         $group: {
@@ -433,7 +432,7 @@ export const adminDashboardStats = async (req, res) => {
       { $sort: { "_id.year": 1, "_id.month": 1 } }
     ]);
 
-    // 6️⃣ Category-wise sales (only if category exists in items)
+    // 6️ Category-wise sales (only if category exists in items)
     const categorySales = await Bill.aggregate([
       { $unwind: "$items" },
       {

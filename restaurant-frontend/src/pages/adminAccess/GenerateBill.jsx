@@ -9,7 +9,7 @@ export default function GenerateBill() {
   const [customerPhone, setCustomerPhone] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("Cash");
   const [searchTerm, setSearchTerm] = useState("");
-  const BASE_URL = "https://7-eleven-backend.vercel.app/api";
+  const BASE_URL = "http://localhost:8000/api";
 
   // Fetch products
   useEffect(() => {

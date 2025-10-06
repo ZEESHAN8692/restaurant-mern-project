@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
-const API_BASE = "https://7-eleven-backend.vercel.app/api/public";
+const API_BASE = "http://localhost:8000/api/public";
 
 const PublicShop = () => {
   const [products, setProducts] = useState([]);

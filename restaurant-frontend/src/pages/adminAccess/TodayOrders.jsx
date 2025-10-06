@@ -9,7 +9,7 @@ export default function TodayOrders() {
 
   useEffect(() => {
     axios
-      .get("https://7-eleven-backend.vercel.app/api/admin-today-orders", { withCredentials: true })
+      .get("http://localhost:8000/api/admin-today-orders", { withCredentials: true })
       .then(res => {
         if (res.data.success) {
           setOrders(res.data.orders);

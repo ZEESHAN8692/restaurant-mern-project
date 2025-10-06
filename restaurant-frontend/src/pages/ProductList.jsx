@@ -10,7 +10,7 @@ const ProductList = () => {
     const fetchProducts = async () => {
       try {
         const { data } = await axios.get(
-          "https://7-eleven-backend.vercel.app/api/public/get-all-products"
+          "http://localhost:8000/api/public/get-all-products"
         );
         setProducts(data?.products || []);
       } catch (error) {

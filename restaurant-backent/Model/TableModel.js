@@ -1,11 +1,11 @@
-// models/TableBooking.js
+
 import mongoose from "mongoose";
 
 const TableBookingSchema = new mongoose.Schema({
   name: { type: String, required: true },
   phone: { type: String, required: true },
   guests: { type: Number, required: true },
-  time: { type: Date }, // optional, can be null
+  time: { type: Date },
   createdAt: { type: Date, default: Date.now },
 });
 

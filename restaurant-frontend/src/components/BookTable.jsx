@@ -22,7 +22,7 @@ export default function BookTable() {
     setMessage("");
     
     try {
-      const res = await fetch("https://7-eleven-backend.vercel.app/book", {
+      const res = await fetch("http://localhost:8000/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

@@ -25,7 +25,7 @@ router.post("/create-order", async (req, res) => {
     const amount = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
     // 3. Generate QR code
-    const upiLink = `upi://pay?pa=ashrafulmomin@ybl&pn=MerchantName&am=${amount}&cu=INR&tn=${orderId}`;
+    const upiLink = `upi://pay?pa=zeeshanrazakhan78-3@okaxis&pn=MerchantName&am=${amount}&cu=INR&tn=${orderId}`;
     const qrCodeUrl = await QRCode.toDataURL(upiLink);
 
     // 4. Save order to DB (pseudo-code)

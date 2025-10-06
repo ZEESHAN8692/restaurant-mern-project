@@ -17,7 +17,7 @@ import connectDB from "./config/db.js";
 const app = express();
 dotenv.config();
 connectDB();
-app.use(cors({ origin: "https://7elvenrestaurant.com", credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.json());
 

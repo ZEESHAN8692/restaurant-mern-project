@@ -3,7 +3,7 @@ import { FiEdit, FiTrash2, FiX, FiPlus, FiUpload } from "react-icons/fi";
 import { lazy, Suspense } from "react";
 import AdminLayout from "../../layouts/AdminLayout";
 
-const BASE_URL = "https://7-eleven-backend.vercel.app/api/admin/product";
+const BASE_URL = "http://localhost:8000/api/admin/product";
 
 export default function ProductManager() {
 

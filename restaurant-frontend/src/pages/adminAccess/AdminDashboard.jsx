@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const res = await fetch("https://7-eleven-backend.vercel.app/api/admin_Dashboard", {
+        const res = await fetch("http://localhost:8000/api/admin_Dashboard", {
           credentials: "include",
         });
         const data = await res.json();

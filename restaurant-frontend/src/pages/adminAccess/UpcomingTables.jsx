@@ -15,7 +15,7 @@ export default function AdminUpcomingBookings() {
   const fetchUpcomingBookings = async () => {
     try {
       setLoading(true);
-      const res = await fetch("https://7-eleven-backend.vercel.app/upcoming-bookings");
+      const res = await fetch("http://localhost:8000/upcoming-bookings");
       if (!res.ok) throw new Error('Failed to fetch bookings');
       const data = await res.json();
       setBookings(data);
