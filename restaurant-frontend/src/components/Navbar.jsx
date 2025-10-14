@@ -15,8 +15,6 @@ const Navbar = () => {
   //   navigate("/admin-login");
   // };
 
-  const path = useLocation().pathname;
-  
 
   const menuItems = [
     { name: "Home", to: "/" },
