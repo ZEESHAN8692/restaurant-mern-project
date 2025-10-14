@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     await logoutAdminAPI();
     setIsAdmin(false);
     setCurrentUser(null);
-    // window.location.href = "/admin-login";
+    window.location.href = "/admin-login";
     
   };
 
