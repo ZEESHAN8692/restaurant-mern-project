@@ -1,10 +1,12 @@
 // src/context/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from "react";
 import { loginAdminAPI, checkAuthAPI, logoutAdminAPI } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
@@ -38,6 +40,8 @@ export const AuthProvider = ({ children }) => {
     await logoutAdminAPI();
     setIsAdmin(false);
     setCurrentUser(null);
+    // window.location.href = "/admin-login";
+    
   };
 
   return (

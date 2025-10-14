@@ -20,21 +20,20 @@ export const login = async (req, res) => {
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) return res.status(400).json({ message: "Invalid email or password" });
-
+    
 
     res.cookie("sid", user.id, {
       httpOnly: true,
       signed: true,
       maxAge: 24 * 60 * 60 * 1000,
-      secure: true,
+      secure: false,
       sameSite: "none"
     });
 
-  
-    
     return res.status(200).json({
       success: true,
       message: "Logged in successfully",
+
     });
   } catch (err) {
     res.status(500).json({ message: "Login failed", error: err.message });

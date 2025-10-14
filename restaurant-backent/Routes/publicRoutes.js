@@ -17,18 +17,13 @@ router.get("/get-all-products",async (req, res) => {
 router.post("/create-order", async (req, res) => {
   try {
     const { items, customerName, phone, table_number = null } = req.body;
-
-    // 1. Create unique order ID
     const orderId = `ORD${Date.now()}`;
-
-    // 2. Calculate total amount (example)
     const amount = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
     // 3. Generate QR code
     const upiLink = `upi://pay?pa=zeeshanrazakhan78-3@okaxis&pn=MerchantName&am=${amount}&cu=INR&tn=${orderId}`;
     const qrCodeUrl = await QRCode.toDataURL(upiLink);
 
-    // 4. Save order to DB (pseudo-code)
     await Order.create({
       orderId,
       items,
@@ -38,7 +33,6 @@ router.post("/create-order", async (req, res) => {
       payment: { amount, method: "QR", qrCodeUrl }
     });
 
-    // 5. Send QR code to frontend
     res.status(200).json({
       message: "Order placed successfully, please scan QR to pay",
       orderId,

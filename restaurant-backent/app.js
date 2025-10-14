@@ -9,14 +9,15 @@ import publicRoutes from "./Routes/publicRoutes.js";
 import TableBooking from "./Model/TableModel.js";
 
 
+
+
 import connectDB from "./config/db.js";
-
-
 
 
 const app = express();
 dotenv.config();
 connectDB();
+
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.json());
@@ -90,36 +91,9 @@ app.get("/upcoming-bookings", async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
-
-
-
 
 
 

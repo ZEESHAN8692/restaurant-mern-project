@@ -1,6 +1,7 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import { use } from "react";
 
 const NotFound = lazy(() => import("./pages/404"));
 const Navbar = lazy(() => import("./components/Navbar"));
@@ -26,6 +27,7 @@ const RestaurantLoader = lazy(() => import("./components/loader/Loader"));
 
 
 function App() {
+  const path = useLocation().pathname;
   return (
     <>
       <Navbar />
@@ -65,7 +67,8 @@ function App() {
         <Route path="/admin-settings" element={<div>Settings Page</div>} />
       </Routes>
       </Suspense>
-      <Footer />
+     
+      {!(path.startsWith("/admin")) && <Footer />}
     </>
   );
 }

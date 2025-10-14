@@ -1,11 +1,22 @@
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { logoutAdminAPI } from "../services/authService";
 
 const Navbar = () => {
-  const { isAdmin, logout } = useAuth();
+  const { isAdmin , logout} = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // const logout = async () => {
+  //   await logoutAdminAPI();
+  //   setIsAdmin(false);
+  //   setCurrentUser(null);
+  //   navigate("/admin-login");
+  // };
+
+  const path = useLocation().pathname;
+  
 
   const menuItems = [
     { name: "Home", to: "/" },
@@ -82,12 +93,11 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            
             {isAdmin && (
+              
               <button
-                onClick={() => {
-                  logout();
-                  setMenuOpen(false);
-                }}
+                onClick={logout}
                 className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-black hover:text-amber-800 hover:bg-amber-200 transition-colors"
               >
                 Logout

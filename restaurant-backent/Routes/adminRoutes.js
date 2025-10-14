@@ -28,7 +28,6 @@ router.get("/get-payment-collection", CheckAuth, verifyAdmin, topFinance)
 router.get("/get-top-items", CheckAuth, verifyAdmin, topItems);
 
 
-//pending order routes (admin only)
 router.get("/pending-orders", CheckAuth, verifyAdmin, getPendingOrders);
 
 router.post("/update-order", CheckAuth, verifyAdmin, update_PendingOrders);

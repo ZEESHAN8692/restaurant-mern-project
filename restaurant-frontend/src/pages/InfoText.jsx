@@ -50,11 +50,12 @@ function RestaurantWelcome() {
         
         {/* Call to action */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <button className="flex-1 bg-orange-600 hover:bg-orange-700 text-white px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center">
+          <button className="flex-1 bg-orange-600 hover:bg-orange-700 text-white px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center" onClick={() => window.location.href = '/reservations'}>
             <FiPhone className="mr-2" />
+
             Reserve a Table
           </button>
-          <button className="flex-1 border border-orange-600 text-orange-600 hover:bg-orange-50 px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+          <button className="flex-1 border border-orange-600 text-orange-600 hover:bg-orange-50 px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300" onClick={() => window.location.href = '#menu'}>
             View Menu
           </button>
         </div>

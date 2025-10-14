@@ -9,18 +9,11 @@ import verifyAdmin from "../middleware.js/verifyAdmin.js";
 
 import upload from "../middleware.js/uploadMiddleWare.js";
 
-
-
-
 const router = express.Router();
 
-//Done
 router.post("/products", CheckAuth, verifyAdmin, upload.array("images", 5), addNewProduct);
 
-// Admin-only
 router.get("/products", CheckAuth, getAllProducts);
-
-// Accept multiple images via "images" field
 
 router.put("/products/:id", CheckAuth, verifyAdmin, upload.array("images", 5), updateProduct);
 
